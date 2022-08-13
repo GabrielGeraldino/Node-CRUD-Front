@@ -1,0 +1,194 @@
+<ion-content [fullscreen]="true">
+  <ion-button (click)="sair()">SAIR</ion-button>
+
+  <ion-card (click)="listProducts()">
+    <ion-card-header>
+      <ion-card-title>Listar produtos</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row>
+        <ion-col *ngFor="let item of items">
+          <ion-card>
+            <section>
+              <span>ID: {{ item.id }}</span>
+            </section>
+            <section>
+              <span>MARCA: {{ item.marca }}</span>
+            </section>
+            <section>
+              <span>VALOR: {{ item.valor }}</span>
+            </section>
+            <section>
+              <span>DESCRIÇÃO: {{ item.descricao }}</span>
+            </section>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Adicionar um produto</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Id</ion-label>
+            <ion-input [(ngModel)]="idPost"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Marca</ion-label>
+            <ion-input [(ngModel)]="marca"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Valor</ion-label>
+            <ion-input [(ngModel)]="value"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Descricao</ion-label>
+            <ion-input [(ngModel)]="description"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-button
+        (click)="addProduct()"
+        expand="block"
+        fill="clear"
+        shape="round"
+      >
+        Adicionar produto
+      </ion-button>
+    </ion-card-content>
+
+    <ion-card *ngIf="product">
+      <ion-label>{{ product.id }}</ion-label>
+      <ion-label>{{ product.marca }}</ion-label>
+      <ion-label>{{ product.valor }}</ion-label>
+      <ion-label>{{ product.descricao }}</ion-label>
+    </ion-card>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Get by id produto</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Digite o id do produto</ion-label>
+        <ion-input [(ngModel)]="idGet"></ion-input>
+      </ion-item>
+      <ion-button (click)="getById()" expand="block" fill="clear" shape="round">
+        Buscar produto
+      </ion-button>
+    </ion-card-content>
+
+    <ion-card *ngIf="productById">
+      <section>
+        <ion-label>{{ productById.id }}</ion-label>
+      </section>
+      <section>
+        <ion-label>{{ productById.marca }}</ion-label>
+      </section>
+      <section>
+        <ion-label>{{ productById.valor }}</ion-label>
+      </section>
+      <section>
+        <ion-label>{{ productById.descricao }}</ion-label>
+      </section>
+    </ion-card>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Deletar um produto</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Digite o id do produto</ion-label>
+        <ion-input [(ngModel)]="id"></ion-input>
+      </ion-item>
+      <ion-button
+        (click)="deleteProduct()"
+        expand="block"
+        fill="clear"
+        shape="round"
+      >
+        Deletar produto
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Alterar um produto</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="floating">Digite o id do produto</ion-label>
+        <ion-input [(ngModel)]="idEdit"></ion-input>
+      </ion-item>
+      <ion-button
+        (click)="editProduct()"
+        expand="block"
+        fill="clear"
+        shape="round"
+      >
+        Buscar produto
+      </ion-button>
+    </ion-card-content>
+
+    <ion-card *ngIf="productEdit">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Id</ion-label>
+            <ion-input [(ngModel)]="productEdit.id" disabled></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Marca</ion-label>
+            <ion-input [(ngModel)]="productEdit.marca"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Valor</ion-label>
+            <ion-input [(ngModel)]="productEdit.value"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label position="floating">Descricao</ion-label>
+            <ion-input [(ngModel)]="productEdit.description"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-button
+        (click)="editProductSave()"
+        expand="block"
+        fill="clear"
+        shape="round"
+      >
+        Editar produto
+      </ion-button>
+    </ion-card>
+  </ion-card>
+</ion-content>
